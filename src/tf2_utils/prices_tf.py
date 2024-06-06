@@ -85,6 +85,10 @@ class PricesTF:
 
     def get_prices(self, page: int, limit: int = 100, order: str = "DESC") -> dict:
         return self.__get("/prices", {"page": page, "limit": limit, "order": order})
+    
+    def get_prices_autobot(self) -> dict:
+        response = requests.get("https://autobot.tf/json/pricelist-array")
+        return response.json()
 
     def format_price(self, data: dict) -> dict:
         return {
